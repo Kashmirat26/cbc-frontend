@@ -28,9 +28,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex justify-center items-center w-full h-screen">
+    <div className="flex justify-center items-center w-full h-screen bg-red-300">
       <div className="w-[450px] h-[450px] border border-black flex flex-col justify-center items-center">
-        <img src="/logo.jpg" className="rounded-full w-[100px]"/>
+        <img src="/logo.png" className="rounded-full w-[100px]"/>
         <br/> 
         <span>Email</span>
         <input defaultValue={email} onChange={
