@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 import { FaPlus, FaTrash } from "react-icons/fa"
 import { FaPencil } from "react-icons/fa6"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminProductPage() {
 
@@ -19,6 +19,8 @@ export default function AdminProductPage() {
                 });
         }
     }, [productsLoaded])
+
+    const navigate = useNavigate();
 
     return (
         <div className="w-full h-full flex flex-col relative">
@@ -47,7 +49,7 @@ export default function AdminProductPage() {
                                                 <th className="px-4 py-3 w-[100px]">ID</th>
                                                 <th className="px-4 py-3 w-[180px]">Name</th>
                                                 <th className="px-4 py-3 w-[120px]">Price</th>
-                                                <th className="px-4 py-3 w-[120px]">Last</th>
+                                                <th className="px-4 py-3 w-[120px]">Last Price</th>
                                                 <th className="px-4 py-3 w-[100px]">Stock</th>
                                                 <th className="px-4 py-3">Description</th>
                                                 <th className="px-4 py-3 w-[100px] text-center">Actions</th>
@@ -89,7 +91,12 @@ export default function AdminProductPage() {
                                                     </td>
 
                                                     <td className="px-4 py-3 flex justify-center gap-3">
-                                                        <button className="text-blue-500 hover:text-blue-700">
+                                                        <button className="text-blue-500 hover:text-blue-700"
+                                                            title="Edit"
+                                                            onClick={()=>{
+                                                                navigate("/admin/products/editProduct", {state: {product : product}});
+                                                            }}
+                                                        >
                                                             <FaPencil />
                                                         </button>
                                                         <button className="text-red-500 hover:text-red-700"
@@ -97,7 +104,7 @@ export default function AdminProductPage() {
                                                                 alert(product.productId)
                                                                 const token = localStorage.getItem("token")
 
-                                                                axios.delete(`import.meta.env.VITE_BACKEND_URL/api/products/${product.productId}`, {
+                                                                axios.delete(import.meta.env.VITE_BACKEND_URL +`/api/products/${product.productId}`, {
                                                                     headers: {
                                                                         Authorization: "Bearer " + token
                                                                     },

@@ -1,11 +1,19 @@
-import { Link, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Header from "../components/header";
+import LoginPage from "./loginPages";
+import ProductOverview from "./home/productOverview";
 
 export default function HomePage() {
     return (
-        <div className="h-screen w-full bg-gray-200">
+        <div className="h-screen w-full">
             <Header/>
-           <Routes path="/"></Routes>
+           <div className="w-full h-[calc(100vh-100px)] bg-gray-200">
+            <Routes path="/*">
+            <Route path="/" element={<h1>Home Page</h1>} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/productInfo/:id" element={<ProductOverview />} />
+           </Routes>
+           </div>
         </div>
     );
 }
