@@ -15,7 +15,7 @@ export default function ImageSlider(props){
                                 onClick={()=> setActiveImage(index)}
                                 key={index}
                                 src={image}
-                                className="w-16 h-16 cursor-pointer object-cove mx-2"
+                                className="w-16 h-16 cursor-pointer object-cover mx-2"
                             />
                         ))
                     }

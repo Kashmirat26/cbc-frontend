@@ -7,9 +7,9 @@ import Cart from "./home/cart";
 
 export default function HomePage() {
     return (
-        <div className="h-screen w-full">
+        <div className="home-container h-screen w-full">
             <Header/>
-           <div className="w-full h-[calc(100vh-100px)] bg-gray-200">
+           <div className="w-full h-[calc(100vh-100px)]">
             <Routes path="/*">
             <Route path="/" element={<h1>Home Page</h1>} />
             <Route path="/products" element={<ProductPage />} />
