@@ -2,11 +2,13 @@ import { useEffect, useState } from "react"
 import { loadCart } from "../../utils/cartFunction"
 import CartCard from "../../components/cartCard"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function Cart() {
     const [cart, setCart] = useState([])
     const [total, setTotal] = useState(0)
     const [labeledTotal, setLabeledTotal] = useState(0)
+    const navigate = useNavigate();
     useEffect(
         () => {
             setCart(loadCart())
@@ -26,27 +28,11 @@ export default function Cart() {
     )
 
     function onOrderCheckout() {
-        const token = localStorage.getItem("token")
-        if(token == null){
-            return;
+       navigate("/shipping", {
+        state : {
+            items : loadCart()
         }
-        axios.post(import.meta.env.VITE_BACKEND_URL + "/api/orders",
-            {
-                orderedItems: cart,
-                name: "John Doe",
-                address: "123 Main St, Colombo-5",
-                phone: "07223456789"
-            },
-            {
-                headers: {
-                    Authorization: "Bearer " + token
-                },
-            }
-        ).then(
-            (res)=>{
-                console.log(res.data);
-            }
-        )
+       })
     }
 
     return (

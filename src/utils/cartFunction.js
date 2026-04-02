@@ -1,32 +1,32 @@
-export function loadCart(){
-    const cart = localStorage.getItem("cart");
-    if(cart != null){
-        return JSON.parse(cart);
-    }else{
-        return[];
-    }
+export function loadCart(){ 
+    const cart = localStorage.getItem("cart"); 
+    if(cart != null){ 
+        return JSON.parse(cart); 
+    }else{ 
+        return[]; 
+    } 
 }
 
 export function addToCart(productId, qty){
     const cart = loadCart();
+
     const index = cart.findIndex(
-        (item)=>{
-            item.productId === productId
-        }
-    )
+        (item) => item.productId === productId
+    );
+
     if(index === -1){
-        cart.push(
-            {productId, qty}
-        )
+        cart.push({ productId, qty });
     }else{
-        const newQty = cart[index].qty + qty
-        if(newQty<=0){
-            cart.splice(index,1)
+        const newQty = cart[index].qty + qty;
+
+        if(newQty <= 0){
+            cart.splice(index, 1);
         }else{
-            cart[index].qty = newQty
+            cart[index].qty = newQty;
         }
     }
-    saveCart(cart)
+
+    saveCart(cart);
 }
 
 export function saveCart(cart){

@@ -4,6 +4,7 @@ import { FaBoxOpen, FaShoppingCart, FaUsers } from "react-icons/fa";
 import AdminProductPage from "./admin/adminProductPage";
 import AddProductForm from "./admin/addProductForm";
 import EditProductForm from "./admin/editProductForm";
+import AdminOrdersPage from "./admin/adminOrderPage";
 
 export default function AdminHomePage() {
   return (
@@ -55,7 +56,7 @@ export default function AdminHomePage() {
             <Route path="/products" element={<AdminProductPage/>}/>
             <Route path="/products/addProduct" element={<AddProductForm/>}/>
             <Route path="/products/editProduct" element={<EditProductForm/>}/>
-            <Route path="/orders" element={<h1>Orders</h1>}/>
+             <Route path="/orders" element={<AdminOrdersPage/>}/>
             <Route path="/customers" element={<h1>Customers</h1>}/>
             <Route path="/*" element={<h1>404 - Page Not Found</h1>}/>
           </Routes>

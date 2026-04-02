@@ -3,8 +3,7 @@ import { Link } from "react-router-dom"
 export default function ProductCard(props) {
     console.log(props)
     return (
-        <Link to={`/productInfo/${props.product.productId}`}>
-            <div className="w-[300px] h-[500px] m-[10px] rounded-xl shadow-lg 
+        <Link to={`/productInfo/${props.product.productId}`} className="w-[300px] h-[500px] m-[10px] rounded-xl shadow-lg 
             shadow-gray-500 hover:shadow-white hover:border-[3px] 
             overflow-hidden flex flex-col">
                 <img src={props.product.images[0]}
@@ -19,7 +18,6 @@ export default function ProductCard(props) {
                             LKR. {props.product.price.toFixed(2)}</p>
                     }
                 </div>
-            </div>
         </Link>
     )
 }
